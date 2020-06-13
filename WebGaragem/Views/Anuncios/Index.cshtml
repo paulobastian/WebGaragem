@@ -1,0 +1,96 @@
+﻿@model IEnumerable<WebGaragem.Models.Entidades.Anuncio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<hr />
+@using (Html.BeginForm())
+
+{
+    <p>
+        <table>           
+            <tr>
+                <th>Data Inicio : @Html.TextBox("searchDtIni", "12/06/2020") até @Html.TextBox("searchDtFim", "12/06/2020")</th>
+                <th>
+                    <input type="submit" value="Gerar arquivos PDF" />
+                </th>
+            </tr>
+
+</table>
+    </p>
+}
+
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoVeiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorVenda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCombustivel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataVenda)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca.NomeMarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modelo.NomeModelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnoVeiculo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorVenda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoCombustivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataVenda)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

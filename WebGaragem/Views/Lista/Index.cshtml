@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebGaragem.Models.Entidades.Anuncio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Anuncios</h1>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        Filtrar: @Html.TextBox("searchMarca")
+        <input type="submit" value="Search"/>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoVeiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorVenda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCombustivel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataVenda)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca.NomeMarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modelo.NomeModelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnoVeiculo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorVenda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoCombustivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataVenda)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
